@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.btnSave:
-                formsuccess = 4;
+                formsuccess = 5;
 
                 username = etUsername.getText().toString();
                 password = etPassword.getText().toString();
@@ -57,13 +57,17 @@ public class SignupActivity extends AppCompatActivity {
                     etConfirmPassword.setError("This field is required");
                     formsuccess--;
                 }
+                if (!ConfirmPassword.equals(password)) {
+                    etConfirmPassword.setError("Password Not Match");
+                    formsuccess--;
+                }
 
                 if (FullName.equals("")) {
                     etFullName.setError("This field is required");
                     formsuccess--;
                 }
 
-                if (formsuccess == 4) {
+                if (formsuccess == 5) {
                     Toast.makeText(this, "Form Successfully Validated", Toast.LENGTH_SHORT).show();
                 }
                 break;
